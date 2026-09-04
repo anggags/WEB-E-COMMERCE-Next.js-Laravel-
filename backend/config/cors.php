@@ -8,7 +8,7 @@ return [
 
     'allowed_origins' => [env('FRONTEND_URL', 'http://localhost:3000')],
 
-    'allowed_origins_patterns' => [],
+    'allowed_origins_patterns' => ['trycloudflare.com$'],
 
     'allowed_headers' => ['*'],
 
