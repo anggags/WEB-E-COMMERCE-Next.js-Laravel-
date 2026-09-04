@@ -1,0 +1,11 @@
+.env*
+!.env.example
+docker/data/
+node_modules/
+frontend/.next/
+backend/vendor/
+backend/storage/logs/*.log
+backend/bootstrap/cache/*.php
+*.swp
+*.swo
+.DS_Store
