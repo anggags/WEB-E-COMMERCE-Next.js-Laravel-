@@ -71,7 +71,7 @@ class OrdersTable
                         'cancelled' => 'Dibatalkan',
                     ]),
             ])
-            ->recordActions([
+            ->actions([
                 EditAction::make()->label(''),
             ]);
     }

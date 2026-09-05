@@ -59,10 +59,10 @@ class ProductsTable
                 \Filament\Tables\Filters\TernaryFilter::make('is_active')
                     ->label('Status Aktif'),
             ])
-            ->recordActions([
+            ->actions([
                 EditAction::make(),
             ])
-            ->toolbarActions([
+            ->bulkActions([
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
                 ]),

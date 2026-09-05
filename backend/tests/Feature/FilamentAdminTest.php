@@ -6,7 +6,17 @@ use App\Filament\Resources\Orders\Pages\ListOrders;
 use App\Filament\Resources\Orders\Pages\EditOrder;
 use App\Filament\Resources\Payments\Pages\ListPayments;
 use App\Filament\Resources\Users\Pages\ListUsers;
+use App\Filament\Resources\Products\Pages\ListProducts;
+use App\Filament\Resources\Products\Pages\CreateProduct;
+use App\Filament\Resources\Products\Pages\EditProduct;
+use App\Filament\Resources\Categories\Pages\ListCategories;
+use App\Filament\Resources\Categories\Pages\CreateCategory;
+use App\Filament\Resources\Categories\Pages\EditCategory;
+use App\Filament\Resources\Users\Pages\CreateUser;
+use App\Filament\Resources\Users\Pages\EditUser;
 use App\Models\Order;
+use App\Models\Product;
+use App\Models\Category;
 use App\Models\User;
 use Database\Seeders\EcommerceSeeder;
 use Filament\Pages\Dashboard;
@@ -62,6 +72,50 @@ class FilamentAdminTest extends TestCase
     {
         Livewire::actingAs($this->admin())
             ->test(ListUsers::class)
+            ->assertSuccessful();
+    }
+
+    public function test_product_pages_render(): void
+    {
+        Livewire::actingAs($this->admin())
+            ->test(ListProducts::class)
+            ->assertSuccessful();
+
+        Livewire::actingAs($this->admin())
+            ->test(CreateProduct::class)
+            ->assertSuccessful();
+
+        $product = Product::query()->firstOrFail();
+        Livewire::actingAs($this->admin())
+            ->test(EditProduct::class, ['record' => $product->getKey()])
+            ->assertSuccessful();
+    }
+
+    public function test_category_pages_render(): void
+    {
+        Livewire::actingAs($this->admin())
+            ->test(ListCategories::class)
+            ->assertSuccessful();
+
+        Livewire::actingAs($this->admin())
+            ->test(CreateCategory::class)
+            ->assertSuccessful();
+
+        $category = Category::query()->firstOrFail();
+        Livewire::actingAs($this->admin())
+            ->test(EditCategory::class, ['record' => $category->getKey()])
+            ->assertSuccessful();
+    }
+
+    public function test_user_pages_render(): void
+    {
+        $user = User::where('role', 'customer')->firstOrFail();
+        Livewire::actingAs($this->admin())
+            ->test(CreateUser::class)
+            ->assertSuccessful();
+
+        Livewire::actingAs($this->admin())
+            ->test(EditUser::class, ['record' => $user->getKey()])
             ->assertSuccessful();
     }
 

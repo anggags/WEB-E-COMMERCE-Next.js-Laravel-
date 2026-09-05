@@ -8,6 +8,7 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\Toggle;
+use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 use Illuminate\Support\Str;
 
@@ -17,49 +18,51 @@ class ProductForm
     {
         return $schema
             ->components([
-                Select::make('category_id')
-                    ->relationship('category', 'name')
-                    ->label('Kategori')
-                    ->required(),
-                TextInput::make('name')
-                    ->label('Nama Produk')
-                    ->required()
-                    ->maxLength(255)
-                    ->live(onBlur: true)
-                    ->afterStateUpdated(
-                        fn ($state, callable $set) => blank($state)
-                            ? null
-                            : $set('slug', Str::slug($state))
-                    ),
-                TextInput::make('slug')
-                    ->required()
-                    ->maxLength(255)
-                    ->unique(ignoreRecord: true),
-                TextInput::make('sku')
-                    ->label('SKU')
-                    ->required()
-                    ->maxLength(255)
-                    ->unique(ignoreRecord: true),
-                TextInput::make('price')
-                    ->label('Harga')
-                    ->required()
-                    ->numeric()
-                    ->prefix('Rp'),
-                TextInput::make('stock')
-                    ->label('Stok')
-                    ->required()
-                    ->numeric()
-                    ->default(0),
-                Textarea::make('description')
-                    ->label('Deskripsi')
-                    ->columnSpanFull(),
-                Toggle::make('is_active')
-                    ->label('Aktif')
-                    ->inline(false)
-                    ->default(true),
-            ])
-            ->sections([
-                \Filament\Schemas\Components\Section::make('Gambar Produk')
+                Section::make('Informasi Dasar')
+                    ->schema([
+                        Select::make('category_id')
+                            ->relationship('category', 'name')
+                            ->label('Kategori')
+                            ->required(),
+                        TextInput::make('name')
+                            ->label('Nama Produk')
+                            ->required()
+                            ->maxLength(255)
+                            ->live(onBlur: true)
+                            ->afterStateUpdated(
+                                fn ($state, callable $set) => blank($state)
+                                    ? null
+                                    : $set('slug', Str::slug($state))
+                            ),
+                        TextInput::make('slug')
+                            ->required()
+                            ->maxLength(255)
+                            ->unique(ignoreRecord: true),
+                        TextInput::make('sku')
+                            ->label('SKU')
+                            ->required()
+                            ->maxLength(255)
+                            ->unique(ignoreRecord: true),
+                        TextInput::make('price')
+                            ->label('Harga')
+                            ->required()
+                            ->numeric()
+                            ->prefix('Rp'),
+                        TextInput::make('stock')
+                            ->label('Stok')
+                            ->required()
+                            ->numeric()
+                            ->default(0),
+                        Textarea::make('description')
+                            ->label('Deskripsi')
+                            ->columnSpanFull(),
+                        Toggle::make('is_active')
+                            ->label('Aktif')
+                            ->inline(false)
+                            ->default(true),
+                    ])->columns(2),
+
+                Section::make('Gambar Produk')
                     ->schema([
                         Repeater::make('images')
                             ->label('Gambar')
@@ -79,7 +82,8 @@ class ProductForm
                             ->defaultItems(0)
                             ->reorderableWithButtons(),
                     ]),
-                \Filament\Schemas\Components\Section::make('Varian Produk')
+
+                Section::make('Varian Produk')
                     ->schema([
                         Repeater::make('variants')
                             ->label('Varian')
