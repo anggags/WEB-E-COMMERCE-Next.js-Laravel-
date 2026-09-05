@@ -7,11 +7,11 @@ import { openSnapPayment } from "@/lib/midtrans";
 import type { ApiResponse, Order, PaginatedResponse } from "@/types";
 
 const STATUS_STYLE: Record<string, string> = {
-  pending: "bg-amber-100 text-amber-700",
-  paid: "bg-blue-100 text-blue-700",
-  processing: "bg-indigo-100 text-indigo-700",
-  shipped: "bg-purple-100 text-purple-700",
-  completed: "bg-green-100 text-green-700",
+  pending: "bg-accent/15 text-accent",
+  paid: "bg-sky-500/15 text-sky-300",
+  processing: "bg-indigo-500/15 text-indigo-300",
+  shipped: "bg-purple-500/15 text-purple-300",
+  completed: "bg-green-500/15 text-green-400",
   cancelled: "bg-zinc-200 text-zinc-500",
 };
 
@@ -103,7 +103,7 @@ export default function OrdersSection() {
         const isOpen = expanded === order.id;
         const canCancel = ["pending", "paid"].includes(order.status);
         return (
-          <div key={order.id} className="overflow-hidden rounded-2xl border border-zinc-200 bg-white">
+          <div key={order.id} className="overflow-hidden rounded-2xl border border-zinc-200 bg-[#1c1c22]">
             <button
               onClick={() => setExpanded(isOpen ? null : order.id)}
               className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left"

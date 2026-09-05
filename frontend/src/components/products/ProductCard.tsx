@@ -64,7 +64,7 @@ export default function ProductCard({ product }: { product: Product }) {
   }
 
   return (
-    <div className="group relative overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-0.5">
+    <div className="group relative overflow-hidden rounded-2xl border border-zinc-200 bg-[#1c1c22] shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-0.5">
       <Link href={`/products/${product.slug}`} className="block">
         <div className="relative aspect-square w-full overflow-hidden bg-zinc-100">
           {image ? (
@@ -92,7 +92,7 @@ export default function ProductCard({ product }: { product: Product }) {
           className={`flex h-10 w-10 items-center justify-center rounded-full shadow-md transition-all duration-200 ${
             wishlisted
               ? "bg-red-500 text-white scale-110"
-              : "bg-white text-zinc-700 opacity-0 hover:bg-zinc-900 hover:text-white group-hover:opacity-100"
+              : "bg-white text-zinc-700 opacity-0 hover:bg-white hover:text-[#121212] group-hover:opacity-100"
           } ${wishAnim ? "animate-pop" : ""}`}
         >
           <HeartIcon filled={wishlisted} />
@@ -104,7 +104,7 @@ export default function ProductCard({ product }: { product: Product }) {
           className={`flex h-10 w-10 items-center justify-center rounded-full shadow-md transition-all duration-200 ${
             added
               ? "bg-green-500 text-white scale-110"
-              : "bg-white text-zinc-700 opacity-0 hover:bg-zinc-900 hover:text-white group-hover:opacity-100"
+              : "bg-white text-zinc-700 opacity-0 hover:bg-white hover:text-[#121212] group-hover:opacity-100"
           } disabled:cursor-not-allowed disabled:opacity-40`}
         >
           {added ? <CheckIcon /> : <CartPlusIcon />}

@@ -141,26 +141,26 @@ export default function Header() {
   }
 
   return (
-    <header
+<header
       ref={headerRef}
-      className="sticky top-0 z-40 w-full border-b border-zinc-200 bg-white/80 backdrop-blur-md transition-all duration-300"
+      className="sticky top-0 z-40 w-full border-b border-zinc-200 bg-[#151518]/85 backdrop-blur-md transition-all duration-300"
     >
       <div
         data-nav-box
         className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8"
       >
         <Link href="/" className="text-lg font-bold tracking-tight">
-          Toko<span className="text-amber-500">Online</span>
+          Toko<span className="text-accent">Online</span>
         </Link>
 
-        <nav className="hidden items-center gap-6 text-sm font-medium text-zinc-600 md:flex">
-          <Link href="/" className="transition-colors hover:text-zinc-900">
+        <nav className="hidden items-center gap-6 text-sm font-medium text-zinc-300 md:flex">
+          <Link href="/" className="transition-colors hover:text-white">
             Beranda
           </Link>
-          <Link href="/products" className="transition-colors hover:text-zinc-900">
+          <Link href="/products" className="transition-colors hover:text-white">
             Produk
           </Link>
-          <Link href="/categories" className="transition-colors hover:text-zinc-900">
+          <Link href="/categories" className="transition-colors hover:text-white">
             Kategori
           </Link>
         </nav>
@@ -190,7 +190,7 @@ export default function Header() {
                     setShowDropdown(true);
                   }}
                   placeholder="Cari produk..."
-                  className="w-48 rounded-full border border-zinc-300 bg-white px-4 py-1.5 pr-8 text-sm focus:w-64 focus:border-amber-500 focus:outline-none transition-all sm:w-56 sm:focus:w-72"
+                  className="w-48 rounded-full border border-zinc-300 bg-[#1c1c22] px-4 py-1.5 pr-8 text-sm text-zinc-100 placeholder:text-zinc-500 focus:w-64 focus:border-accent focus:outline-none transition-all sm:w-56 sm:focus:w-72"
                 />
                 <button
                   type="button"
@@ -200,7 +200,7 @@ export default function Header() {
                     setSuggestions([]);
                     setShowDropdown(false);
                   }}
-                  className="absolute right-2 p-1 text-zinc-400 hover:text-zinc-700"
+                  className="absolute right-2 p-1 text-zinc-400 hover:text-zinc-200"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="h-4 w-4">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
@@ -211,7 +211,7 @@ export default function Header() {
               <button
                 onClick={openSearch}
                 aria-label="Cari produk"
-                className="rounded-full p-2 text-zinc-600 transition-colors hover:text-zinc-900"
+                className="rounded-full p-2 text-zinc-300 transition-colors hover:text-white"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor" className="h-5 w-5">
                   <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
@@ -221,7 +221,7 @@ export default function Header() {
 
             {/* Dropdown: recent + suggestions */}
             {searchOpen && showDropdown && (
-              <div className="absolute right-0 top-full z-50 mt-2 w-80 overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-xl">
+              <div className="absolute right-0 top-full z-50 mt-2 w-80 overflow-hidden rounded-2xl border border-zinc-200 bg-[#1c1c22] shadow-xl">
                 {/* Recent searches */}
                 {recentSearches.length > 0 && !query && (
                   <div className="p-3">
@@ -306,7 +306,7 @@ export default function Header() {
           >
             <CartIcon />
             {cartCount > 0 && (
-              <span className="absolute -right-0.5 -top-0.5 flex h-5 min-w-5 items-center justify-center rounded-full bg-amber-500 px-1 text-[10px] font-bold text-zinc-950">
+              <span className="absolute -right-0.5 -top-0.5 flex h-5 min-w-5 items-center justify-center rounded-full bg-accent px-1 text-[10px] font-bold text-white">
                 {cartCount > 99 ? "99+" : cartCount}
               </span>
             )}
@@ -316,13 +316,13 @@ export default function Header() {
             <div className="flex items-center gap-3">
               <Link
                 href="/account"
-                className="hidden text-sm font-medium text-zinc-600 transition-colors hover:text-zinc-900 sm:block"
+                className="hidden text-sm font-medium text-zinc-300 transition-colors hover:text-white sm:block"
               >
                 {user.name}
               </Link>
               <button
                 onClick={handleLogout}
-                className="rounded-full bg-zinc-900 px-4 py-1.5 text-sm font-medium text-white transition-opacity hover:opacity-90"
+                className="rounded-full bg-white text-[#121212] px-4 py-1.5 text-sm font-medium transition-opacity hover:opacity-90"
               >
                 Keluar
               </button>
@@ -330,7 +330,7 @@ export default function Header() {
           ) : (
             <Link
               href="/login"
-              className="rounded-full bg-zinc-900 px-4 py-1.5 text-sm font-medium text-white transition-opacity hover:opacity-90"
+              className="rounded-full bg-white text-[#121212] px-4 py-1.5 text-sm font-medium transition-opacity hover:opacity-90"
             >
               Masuk
             </Link>

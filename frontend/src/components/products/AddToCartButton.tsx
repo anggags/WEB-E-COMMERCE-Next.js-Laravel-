@@ -35,7 +35,7 @@ export default function AddToCartButton({ product }: { product: Product }) {
       <button
         onClick={handleAdd}
         disabled={loading || product.stock <= 0}
-        className="rounded-full bg-zinc-900 px-6 py-3 text-sm font-medium text-white transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
+        className="rounded-full bg-white text-[#121212] px-6 py-3 text-sm font-medium transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
       >
         {loading ? "Menambahkan..." : product.stock <= 0 ? "Stok Habis" : "Masukkan ke Keranjang"}
       </button>

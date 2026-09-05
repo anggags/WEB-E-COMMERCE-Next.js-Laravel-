@@ -29,7 +29,7 @@ const RATING_OPTIONS = [
 
 function SkeletonCard() {
   return (
-    <div className="animate-pulse overflow-hidden rounded-2xl border border-zinc-200 bg-white">
+    <div className="animate-pulse overflow-hidden rounded-2xl border border-zinc-200 bg-[#1c1c22]">
       <div className="aspect-square bg-zinc-200" />
       <div className="space-y-2 p-4">
         <div className="h-3 w-3/4 rounded bg-zinc-200" />
@@ -202,7 +202,7 @@ export default function CatalogPage() {
           {activeFilters.map((f) => (
             <span
               key={f.type}
-              className="inline-flex items-center gap-1.5 rounded-full border border-zinc-200 bg-white px-3 py-1 text-xs font-medium text-zinc-700"
+              className="inline-flex items-center gap-1.5 rounded-full border border-zinc-200 bg-[#1c1c22] px-3 py-1 text-xs font-medium text-zinc-700"
             >
               {f.label}
               <button
@@ -238,7 +238,7 @@ export default function CatalogPage() {
               <button
                 type="submit"
                 aria-label="Cari"
-                className="rounded-r-full bg-zinc-900 px-4 text-white"
+                className="rounded-r-full bg-white text-[#121212] px-4"
               >
                 →
               </button>
@@ -252,7 +252,7 @@ export default function CatalogPage() {
               <button
                 onClick={() => onCategoryChange("")}
                 className={`block w-full rounded-lg px-3 py-1.5 text-left text-sm transition-colors ${
-                  category === "" ? "bg-zinc-900 text-white" : "text-zinc-600 hover:bg-zinc-100"
+                  category === "" ? "bg-white text-[#121212]" : "text-zinc-600 hover:bg-zinc-100"
                 }`}
               >
                 Semua
@@ -262,7 +262,7 @@ export default function CatalogPage() {
                   key={cat.id}
                   onClick={() => onCategoryChange(cat.slug)}
                   className={`block w-full rounded-lg px-3 py-1.5 text-left text-sm transition-colors ${
-                    category === cat.slug ? "bg-zinc-900 text-white" : "text-zinc-600 hover:bg-zinc-100"
+                    category === cat.slug ? "bg-white text-[#121212]" : "text-zinc-600 hover:bg-zinc-100"
                   }`}
                 >
                   {cat.name}
@@ -295,7 +295,7 @@ export default function CatalogPage() {
             </div>
             <button
               onClick={applyFilters}
-              className="mt-2 w-full rounded-lg bg-zinc-900 py-1.5 text-xs font-medium text-white transition-opacity hover:opacity-90"
+              className="mt-2 w-full rounded-lg bg-white text-[#121212] py-1.5 text-xs font-medium transition-opacity hover:opacity-90"
             >
               Terapkan
             </button>
@@ -326,13 +326,13 @@ export default function CatalogPage() {
         {/* Main content */}
         <div>
           <div className="mb-4 flex items-center justify-end">
-            <div className="inline-flex flex-wrap gap-1 rounded-full border border-zinc-200 bg-white p-1">
+            <div className="inline-flex flex-wrap gap-1 rounded-full border border-zinc-200 bg-[#1c1c22] p-1">
               {SORTS.map((s) => (
                 <button
                   key={s.key}
                   onClick={() => onSortChange(s.key)}
                   className={`rounded-full px-3 py-1.5 text-xs font-medium transition-colors ${
-                    sort === s.key ? "bg-zinc-900 text-white" : "text-zinc-500 hover:text-zinc-900"
+                    sort === s.key ? "bg-white text-[#121212]" : "text-zinc-500 hover:text-zinc-900"
                   }`}
                 >
                   {s.label}

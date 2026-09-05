@@ -78,7 +78,7 @@ export default function CategoryDetailClient({
           {Array.from({ length: 8 }).map((_, i) => (
             <div
               key={i}
-              className="animate-pulse overflow-hidden rounded-2xl border border-zinc-200 bg-white"
+              className="animate-pulse overflow-hidden rounded-2xl border border-zinc-200 bg-[#1c1c22]"
             >
               <div className="aspect-square bg-zinc-200" />
               <div className="space-y-2 p-4">
@@ -102,7 +102,7 @@ export default function CategoryDetailClient({
             onClick={() => setSub("")}
             className={`rounded-full border px-4 py-1.5 text-xs font-medium transition-colors ${
               sub === ""
-                ? "border-zinc-900 bg-zinc-900 text-white"
+                ? "border-white bg-white text-[#121212]"
                 : "border-zinc-300 text-zinc-600 hover:border-zinc-900"
             }`}
           >
@@ -114,7 +114,7 @@ export default function CategoryDetailClient({
               onClick={() => setSub(String(s.id))}
               className={`rounded-full border px-4 py-1.5 text-xs font-medium transition-colors ${
                 sub === String(s.id)
-                  ? "border-zinc-900 bg-zinc-900 text-white"
+                  ? "border-white bg-white text-[#121212]"
                   : "border-zinc-300 text-zinc-600 hover:border-zinc-900"
               }`}
             >
@@ -130,7 +130,7 @@ export default function CategoryDetailClient({
             {Array.from({ length: 8 }).map((_, i) => (
               <div
                 key={i}
-                className="animate-pulse overflow-hidden rounded-2xl border border-zinc-200 bg-white"
+                className="animate-pulse overflow-hidden rounded-2xl border border-zinc-200 bg-[#1c1c22]"
               >
                 <div className="aspect-square bg-zinc-200" />
                 <div className="space-y-2 p-4">

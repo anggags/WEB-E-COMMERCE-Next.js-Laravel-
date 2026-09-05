@@ -116,7 +116,7 @@ export default function CheckoutClient() {
         </p>
         <button
           onClick={() => router.push("/products")}
-          className="mt-6 rounded-full bg-zinc-900 px-6 py-3 text-sm font-medium text-white"
+          className="mt-6 rounded-full bg-white text-[#121212] px-6 py-3 text-sm font-medium"
         >
           Lihat Produk
         </button>
@@ -198,7 +198,7 @@ export default function CheckoutClient() {
           </section>
         </div>
 
-        <aside className="h-fit rounded-2xl border border-zinc-200 bg-white p-6 lg:sticky lg:top-24">
+        <aside className="h-fit rounded-2xl border border-zinc-200 bg-[#1c1c22] p-6 lg:sticky lg:top-24">
           <h2 className="text-lg font-semibold text-zinc-900">Ringkasan Pesanan</h2>
 
           <ul className="mt-4 max-h-64 space-y-3 overflow-y-auto pr-1">
@@ -230,7 +230,7 @@ export default function CheckoutClient() {
           <button
             onClick={handleCheckout}
             disabled={submitting}
-            className="mt-5 w-full rounded-full bg-zinc-900 py-3.5 text-sm font-semibold text-white transition-opacity hover:opacity-90 disabled:opacity-50"
+            className="mt-5 w-full rounded-full bg-white text-[#121212] py-3.5 text-sm font-semibold transition-opacity hover:opacity-90 disabled:opacity-50"
           >
             {submitting ? "Memproses..." : "Buat Pesanan"}
           </button>
@@ -273,13 +273,13 @@ function SuccessScreen({ success }: { success: SuccessInfo }) {
         </div>
         <h1 className="mt-6 text-2xl font-bold text-zinc-900">Pembayaran Berhasil!</h1>
         <p className="mt-2 text-zinc-500">Terima kasih, pembayaran Anda telah diterima.</p>
-        <div className="mt-8 rounded-2xl border border-zinc-200 bg-white p-6 text-left">
+        <div className="mt-8 rounded-2xl border border-zinc-200 bg-[#1c1c22] p-6 text-left">
           <InfoRow label="No. Invoice" value={success.invoice_no} mono />
           <InfoRow label="Status" value="Dibayar" color="text-green-600" />
           <InfoRow label="Total" value={formatIDR(success.total)} bold />
         </div>
         <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:justify-center">
-          <button onClick={() => router.push("/")} className="rounded-full bg-zinc-900 px-6 py-3 text-sm font-medium text-white">Kembali ke Beranda</button>
+          <button onClick={() => router.push("/")} className="rounded-full bg-white text-[#121212] px-6 py-3 text-sm font-medium">Kembali ke Beranda</button>
           <button onClick={() => router.push("/account?tab=orders")} className="rounded-full border border-zinc-300 px-6 py-3 text-sm font-medium text-zinc-700 hover:bg-zinc-100">Lihat Pesanan</button>
         </div>
       </div>
@@ -294,13 +294,13 @@ function SuccessScreen({ success }: { success: SuccessInfo }) {
         </div>
         <h1 className="mt-6 text-2xl font-bold text-zinc-900">Menunggu Pembayaran</h1>
         <p className="mt-2 text-zinc-500">Silakan selesaikan pembayaran sesuai instruksi yang diberikan.</p>
-        <div className="mt-8 rounded-2xl border border-zinc-200 bg-white p-6 text-left">
+        <div className="mt-8 rounded-2xl border border-zinc-200 bg-[#1c1c22] p-6 text-left">
           <InfoRow label="No. Invoice" value={success.invoice_no} mono />
           <InfoRow label="Status" value="Menunggu Pembayaran" color="text-amber-600" />
           <InfoRow label="Total" value={formatIDR(success.total)} bold />
         </div>
         <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:justify-center">
-          <button onClick={() => router.push("/")} className="rounded-full bg-zinc-900 px-6 py-3 text-sm font-medium text-white">Kembali ke Beranda</button>
+          <button onClick={() => router.push("/")} className="rounded-full bg-white text-[#121212] px-6 py-3 text-sm font-medium">Kembali ke Beranda</button>
           <button onClick={() => router.push("/account?tab=orders")} className="rounded-full border border-zinc-300 px-6 py-3 text-sm font-medium text-zinc-700 hover:bg-zinc-100">Lihat Pesanan</button>
         </div>
       </div>
@@ -315,7 +315,7 @@ function SuccessScreen({ success }: { success: SuccessInfo }) {
       <h1 className="mt-6 text-2xl font-bold text-zinc-900">Pesanan Berhasil Dibuat!</h1>
       <p className="mt-2 text-zinc-500">Terima kasih, pesanan Anda telah kami terima.</p>
 
-      <div className="mt-8 rounded-2xl border border-zinc-200 bg-white p-6 text-left">
+      <div className="mt-8 rounded-2xl border border-zinc-200 bg-[#1c1c22] p-6 text-left">
         <InfoRow label="No. Invoice" value={success.invoice_no} mono />
         <InfoRow label="Status" value="Pending" color="text-amber-600" />
         <InfoRow

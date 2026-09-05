@@ -15,7 +15,7 @@ export default function AboutPage() {
       </p>
       <Link
         href="/products"
-        className="mt-8 inline-block rounded-full bg-zinc-900 px-6 py-3 text-sm font-medium text-white transition-opacity hover:opacity-90"
+        className="mt-8 inline-block rounded-full bg-white text-[#121212] px-6 py-3 text-sm font-medium transition-opacity hover:opacity-90"
       >
         Mulai Belanja
       </Link>

@@ -44,7 +44,7 @@ export default function ProfileSection({ user }: { user: User }) {
 
   return (
     <div className="mx-auto max-w-lg">
-      <div className="rounded-2xl border border-zinc-200 bg-white p-6">
+      <div className="rounded-2xl border border-zinc-200 bg-[#1c1c22] p-6">
         <h2 className="text-lg font-semibold text-zinc-900">Informasi Akun</h2>
         <p className="mt-1 text-sm text-zinc-500">{user.email}</p>
 
@@ -92,7 +92,7 @@ export default function ProfileSection({ user }: { user: User }) {
           <button
             type="submit"
             disabled={loading}
-            className="w-full rounded-full bg-zinc-900 py-3 text-sm font-medium text-white transition-opacity hover:opacity-90 disabled:opacity-50"
+            className="w-full rounded-full bg-white text-[#121212] py-3 text-sm font-medium transition-opacity hover:opacity-90 disabled:opacity-50"
           >
             {loading ? "Menyimpan..." : "Simpan Perubahan"}
           </button>

@@ -47,7 +47,7 @@ export default function AddressForm({ initial, onSaved, onCancel }: AddressFormP
     "mt-1 w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm focus:border-amber-500 focus:outline-none";
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-3 rounded-2xl border border-zinc-200 bg-white p-5">
+    <form onSubmit={handleSubmit} className="space-y-3 rounded-2xl border border-zinc-200 bg-[#1c1c22] p-5">
       <h2 className="text-lg font-semibold text-zinc-900">
         {initial ? "Edit Alamat" : "Tambah Alamat Baru"}
       </h2>
@@ -138,7 +138,7 @@ export default function AddressForm({ initial, onSaved, onCancel }: AddressFormP
         <button
           type="submit"
           disabled={loading}
-          className="rounded-full bg-zinc-900 px-5 py-2.5 text-sm font-medium text-white transition-opacity hover:opacity-90 disabled:opacity-50"
+          className="rounded-full bg-white text-[#121212] px-5 py-2.5 text-sm font-medium transition-opacity hover:opacity-90 disabled:opacity-50"
         >
           {loading ? "Menyimpan..." : initial ? "Simpan Perubahan" : "Simpan Alamat"}
         </button>

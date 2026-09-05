@@ -29,7 +29,7 @@ export default function CategoriesClient() {
               <div
                 key={i}
                 data-reveal
-                className="animate-pulse overflow-hidden rounded-2xl border border-zinc-200 bg-white"
+                className="animate-pulse overflow-hidden rounded-2xl border border-zinc-200 bg-[#1c1c22]"
               >
                 <div className="aspect-[4/5] bg-zinc-200" />
                 <div className="space-y-2 p-4">
@@ -60,7 +60,7 @@ export default function CategoriesClient() {
                 key={cat.id}
                 data-reveal
                 href={`/categories/${cat.slug}`}
-                className="rounded-2xl border border-zinc-200 bg-white p-6 text-center transition-shadow hover:shadow-md"
+                className="rounded-2xl border border-zinc-200 bg-[#1c1c22] p-6 text-center transition-shadow hover:shadow-md"
               >
                 <p className="text-base font-semibold text-zinc-800">{cat.name}</p>
                 {cat.children && cat.children.length > 0 && (

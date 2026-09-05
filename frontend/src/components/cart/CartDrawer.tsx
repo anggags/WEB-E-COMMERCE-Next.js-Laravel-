@@ -59,14 +59,14 @@ export default function CartDrawer() {
       <div
         ref={backdropRef}
         onClick={closeCart}
-        className="absolute inset-0 bg-zinc-950/40 backdrop-blur-sm"
+        className="absolute inset-0 bg-black/50 backdrop-blur-sm"
         style={{ opacity: 0 }}
       />
 
       {/* Panel */}
       <div
         ref={panelRef}
-        className="relative flex h-full w-full max-w-md flex-col bg-white shadow-xl"
+        className="relative flex h-full w-full max-w-md flex-col bg-[#151519] shadow-xl"
         style={{ transform: "translateX(100%)" }}
       >
         <div className="flex items-center justify-between border-b border-zinc-200 px-5 py-4">
@@ -90,7 +90,7 @@ export default function CartDrawer() {
             <p className="text-zinc-500">Keranjang Anda kosong.</p>
             <button
               onClick={closeCart}
-              className="rounded-full bg-zinc-900 px-6 py-2.5 text-sm font-medium text-white transition-opacity hover:opacity-90"
+              className="rounded-full bg-white text-[#121212] px-6 py-2.5 text-sm font-medium transition-opacity hover:opacity-90"
             >
               Mulai Belanja
             </button>
@@ -167,7 +167,7 @@ export default function CartDrawer() {
                   router.push("/checkout");
                 }}
                 disabled={status !== "ready" || items.length === 0}
-                className="mt-4 w-full rounded-full bg-zinc-900 py-3.5 text-sm font-semibold text-white transition-opacity hover:opacity-90 disabled:opacity-50"
+                className="mt-4 w-full rounded-full bg-white text-[#121212] py-3.5 text-sm font-semibold transition-opacity hover:opacity-90 disabled:opacity-50"
               >
                 Checkout
               </button>

@@ -27,7 +27,7 @@ export default function CartClient() {
         <p className="mt-2 text-zinc-500">Login untuk melihat keranjang Anda.</p>
         <button
           onClick={() => router.push("/login")}
-          className="mt-6 rounded-full bg-zinc-900 px-6 py-3 text-sm font-medium text-white"
+          className="mt-6 rounded-full bg-white text-[#121212] px-6 py-3 text-sm font-medium"
         >
           Masuk
         </button>
@@ -44,7 +44,7 @@ export default function CartClient() {
         </p>
         <Link
           href="/products"
-          className="mt-6 inline-block rounded-full bg-zinc-900 px-6 py-3 text-sm font-medium text-white"
+          className="mt-6 inline-block rounded-full bg-white text-[#121212] px-6 py-3 text-sm font-medium"
         >
           Belanja Sekarang
         </Link>
@@ -65,7 +65,7 @@ export default function CartClient() {
             return (
               <li
                 key={item.id}
-                className="flex gap-4 rounded-2xl border border-zinc-200 bg-white p-4"
+                className="flex gap-4 rounded-2xl border border-zinc-200 bg-[#1c1c22] p-4"
               >
                 <div className="relative h-24 w-24 shrink-0 overflow-hidden rounded-xl bg-zinc-100">
                   {image ? (
@@ -124,7 +124,7 @@ export default function CartClient() {
           })}
         </ul>
 
-        <aside className="h-fit rounded-2xl border border-zinc-200 bg-white p-6 lg:sticky lg:top-24">
+        <aside className="h-fit rounded-2xl border border-zinc-200 bg-[#1c1c22] p-6 lg:sticky lg:top-24">
           <h2 className="text-lg font-semibold text-zinc-900">Ringkasan</h2>
           <div className="mt-4 flex items-center justify-between">
             <span className="text-zinc-600">Jumlah Item</span>
@@ -141,7 +141,7 @@ export default function CartClient() {
 
           <button
             onClick={() => router.push("/checkout")}
-            className="mt-5 w-full rounded-full bg-zinc-900 py-3.5 text-sm font-semibold text-white transition-opacity hover:opacity-90"
+            className="mt-5 w-full rounded-full bg-white text-[#121212] py-3.5 text-sm font-semibold transition-opacity hover:opacity-90"
           >
             Checkout
           </button>

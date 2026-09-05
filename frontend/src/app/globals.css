@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #fafafa;
-  --foreground: #18181b;
+  --background: #151518;
+  --foreground: #f4f4f8;
 }
 
 @theme inline {
@@ -15,6 +15,50 @@
 
 @theme {
   --color-accent: #c82924;
+
+  /* Dark luxury remap of the default neutral scale */
+  --color-zinc-50: #151519;
+  --color-zinc-100: #1c1c22;
+  --color-zinc-200: #26262d;
+  --color-zinc-300: #33333b;
+  --color-zinc-400: #62626d;
+  --color-zinc-500: #8f8f9c;
+  --color-zinc-600: #c0c0cb;
+  --color-zinc-700: #d9d9e1;
+  --color-zinc-800: #eaeaf0;
+  --color-zinc-900: #f4f4f8;
+  --color-zinc-950: #ffffff;
+
+  /* Amber -> red accent family */
+  --color-amber-50: #241311;
+  --color-amber-100: #2e1512;
+  --color-amber-200: #3b1915;
+  --color-amber-300: #c82924;
+  --color-amber-400: #c82924;
+  --color-amber-500: #c82924;
+  --color-amber-600: #e04b45;
+  --color-amber-700: #ef6a63;
+  --color-amber-800: #f88b84;
+  --color-amber-900: #fca99f;
+
+  /* Error / danger remap for dark backgrounds */
+  --color-red-50: #2b1413;
+  --color-red-100: #351715;
+  --color-red-200: #45201c;
+  --color-red-300: #a63d38;
+  --color-red-400: #f18585;
+  --color-red-500: #ef4c48;
+  --color-red-600: #d63832;
+  --color-red-700: #b32d28;
+
+  /* Success remap for dark backgrounds */
+  --color-green-50: #13231a;
+  --color-green-100: #16301f;
+  --color-green-200: #1d3d27;
+  --color-green-400: #5ce08a;
+  --color-green-500: #2fbf71;
+  --color-green-600: #23a05e;
+  --color-green-700: #5ce08a;
 }
 
 html {
@@ -28,15 +72,26 @@ body {
   overflow-x: hidden;
 }
 
+::selection {
+  background: rgba(200, 41, 36, 0.35);
+}
+
+/* Form controls inherit the dark scheme */
+input,
+select,
+textarea {
+  color-scheme: dark;
+}
+
+/* Navbar shrink state */
+header.header-shrunk {
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+  background: rgba(21, 21, 25, 0.92);
+}
+
 /* Elements animated by the useReveal hook start invisible until GSAP runs */
 [data-reveal] {
   will-change: transform, opacity;
-}
-
-/* Navbar shrink state triggers a subtle shadow for depth */
-header.header-shrunk {
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
-  background: rgba(255, 255, 255, 0.92);
 }
 
 /* Toast slide-in animation */

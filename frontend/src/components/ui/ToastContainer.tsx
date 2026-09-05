@@ -21,9 +21,9 @@ const ICONS: Record<string, React.ReactNode> = {
 };
 
 const BG: Record<string, string> = {
-  success: "border-green-200 bg-green-50",
-  error: "border-red-200 bg-red-50",
-  info: "border-blue-200 bg-blue-50",
+  success: "border-green-200 bg-[#1c1c22]",
+  error: "border-red-200 bg-[#1c1c22]",
+  info: "border-zinc-300 bg-[#1c1c22]",
 };
 
 export default function ToastContainer() {
@@ -36,7 +36,7 @@ export default function ToastContainer() {
       {toasts.map((toast) => (
         <div
           key={toast.id}
-          className={`pointer-events-auto flex items-center gap-3 rounded-xl border px-4 py-3 text-sm font-medium text-zinc-800 shadow-lg animate-slide-in-right ${BG[toast.type]}`}
+          className={`pointer-events-auto flex items-center gap-3 rounded-xl border px-4 py-3 text-sm font-medium text-zinc-200 shadow-lg animate-slide-in-right ${BG[toast.type]}`}
         >
           {ICONS[toast.type]}
           <span className="max-w-xs">{toast.message}</span>

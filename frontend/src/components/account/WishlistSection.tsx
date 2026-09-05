@@ -31,7 +31,7 @@ export default function WishlistSection() {
         const p = item.product;
         const img = p.images?.[0]?.url;
         return (
-          <div key={item.id} className="flex items-center gap-4 rounded-2xl border border-zinc-200 bg-white p-4">
+          <div key={item.id} className="flex items-center gap-4 rounded-2xl border border-zinc-200 bg-[#1c1c22] p-4">
             <Link href={`/products/${p.slug}`} className="relative h-16 w-16 shrink-0 overflow-hidden rounded-xl bg-zinc-100">
               {img ? (
                 <Image src={img} alt={p.name} fill sizes="64px" className="object-cover" />

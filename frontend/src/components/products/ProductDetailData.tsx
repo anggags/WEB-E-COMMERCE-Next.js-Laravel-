@@ -60,7 +60,7 @@ function ProductDetailBody({ slug }: { slug: string }) {
         <p className="mt-2 text-zinc-500">{error}</p>
         <button
           onClick={refetch}
-          className="mt-6 rounded-full bg-zinc-900 px-6 py-3 text-sm font-medium text-white"
+          className="mt-6 rounded-full bg-white text-[#121212] px-6 py-3 text-sm font-medium"
         >
           Coba Lagi
         </button>
@@ -258,7 +258,7 @@ function ProductDetailView({ product }: { product: Product }) {
                     disabled={v.stock <= 0}
                     className={`rounded-full border px-4 py-2 text-sm transition-colors disabled:opacity-40 ${
                       variantId === v.id
-                        ? "border-zinc-900 bg-zinc-900 text-white"
+                        ? "border-white bg-white text-[#121212]"
                         : "border-zinc-300 hover:border-zinc-900"
                     }`}
                   >
@@ -304,7 +304,7 @@ function ProductDetailView({ product }: { product: Product }) {
               onClick={onAdd}
               disabled={adding || effectiveStock <= 0}
               className={`rounded-full px-8 py-3.5 text-sm font-medium text-white transition-all disabled:cursor-not-allowed disabled:opacity-50 ${
-                added ? "bg-green-500" : "bg-zinc-900 hover:scale-105 active:scale-95"
+                added ? "bg-green-500" : "bg-white text-[#121212] hover:scale-105 active:scale-95"
               }`}
             >
               {adding
@@ -354,7 +354,7 @@ function ProductDetailView({ product }: { product: Product }) {
             reviews.map((review) => (
               <div
                 key={review.id}
-                className="rounded-2xl border border-zinc-200 bg-white p-5"
+                className="rounded-2xl border border-zinc-200 bg-[#1c1c22] p-5"
               >
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">

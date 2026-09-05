@@ -17,7 +17,7 @@ export default function PaymentSuccessPage() {
       <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
         <Link
           href="/"
-          className="rounded-full bg-zinc-900 px-6 py-3 text-sm font-medium text-white transition-opacity hover:opacity-90"
+          className="rounded-full bg-white text-[#121212] px-6 py-3 text-sm font-medium transition-opacity hover:opacity-90"
         >
           Kembali ke Beranda
         </Link>

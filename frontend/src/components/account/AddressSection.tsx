@@ -88,7 +88,7 @@ export default function AddressSection() {
         <h2 className="text-sm font-semibold text-zinc-900">Daftar Alamat</h2>
         <button
           onClick={() => setShowForm(true)}
-          className="rounded-full bg-zinc-900 px-4 py-2 text-sm font-medium text-white transition-opacity hover:opacity-90"
+          className="rounded-full bg-white text-[#121212] px-4 py-2 text-sm font-medium transition-opacity hover:opacity-90"
         >
           + Tambah Baru
         </button>
@@ -103,7 +103,7 @@ export default function AddressSection() {
       )}
 
       {addresses.map((addr) => (
-        <div key={addr.id} className="rounded-2xl border border-zinc-200 bg-white p-5">
+        <div key={addr.id} className="rounded-2xl border border-zinc-200 bg-[#1c1c22] p-5">
           <div className="flex items-start justify-between gap-3">
             <div className="min-w-0">
               <div className="flex items-center gap-2">
