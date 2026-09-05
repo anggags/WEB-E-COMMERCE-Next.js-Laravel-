@@ -58,7 +58,7 @@ echo -e "${GREEN}  ✓ Backend running (PID: $BACKEND_PID)${NC}"
 
 # --- 3. Start cloudflared tunnel ---
 echo -e "${GREEN}[2/3] Starting cloudflared tunnel...${NC}"
-"$CLOUDFLARED" tunnel --url http://localhost:8000 > /tmp/tokoo-cloudflared.log 2>&1 &
+setsid -f "$CLOUDFLARED" tunnel --url http://localhost:8000 --protocol http2 > /tmp/tokoo-cloudflared.log 2>&1 < /dev/null &
 CF_PID=$!
 echo "$CF_PID" >> "$PIDFILE"
 
@@ -94,7 +94,7 @@ echo -e "${GREEN}  ✓ Frontend .env.local updated${NC}"
 echo ""
 echo -e "${CYAN}Starting Next.js dev server...${NC}"
 cd "$FRONTEND_DIR"
-npm run dev &
+setsid -f npm run dev > /tmp/tokoo-frontend.log 2>&1 < /dev/null &
 FRONTEND_PID=$!
 echo "$FRONTEND_PID" >> "$PIDFILE"
 

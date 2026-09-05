@@ -4,8 +4,9 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { gsap } from "gsap";
+import { useAsyncData } from "@/hooks/useAsyncData";
 import { apiGet, extractError } from "@/lib/api";
-import type { PaginatedResponse, Product, Review } from "@/types";
+import type { ApiResponse, PaginatedResponse, Product, Review } from "@/types";
 import { formatIDR } from "@/lib/format";
 import { useAuthStore } from "@/store/authStore";
 import { useCartStore } from "@/store/cartStore";
@@ -22,14 +23,73 @@ function Stars({ value }: { value: number }) {
   );
 }
 
-export default function ProductDetailData({ product }: { product: Product }) {
+export default function ProductDetailData({ slug }: { slug: string }) {
+  return <ProductDetailBody slug={slug} />;
+}
+
+function ProductDetailBody({ slug }: { slug: string }) {
+  const { data, loading, error, refetch } = useAsyncData<Product | null>(() =>
+    apiGet<ApiResponse<Product>>(`/products/${slug}`).then(
+      (r) => r.data ?? null,
+    ),
+    [slug],
+  );
+
+  if (loading) {
+    return (
+      <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+        <div className="grid gap-10 lg:grid-cols-2">
+          <div className="aspect-square animate-pulse rounded-2xl bg-zinc-200" />
+          <div className="space-y-4">
+            <div className="h-4 w-1/3 rounded bg-zinc-200" />
+            <div className="h-9 w-2/3 rounded bg-zinc-200" />
+            <div className="h-8 w-1/3 rounded bg-zinc-100" />
+            <div className="h-4 w-1/2 rounded bg-zinc-100" />
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (!loading && error) {
+    return (
+      <div className="mx-auto max-w-7xl px-4 py-24 text-center">
+        <h1 className="text-2xl font-bold text-zinc-900">
+          Produk tidak dapat dimuat
+        </h1>
+        <p className="mt-2 text-zinc-500">{error}</p>
+        <button
+          onClick={refetch}
+          className="mt-6 rounded-full bg-zinc-900 px-6 py-3 text-sm font-medium text-white"
+        >
+          Coba Lagi
+        </button>
+      </div>
+    );
+  }
+
+  if (!data) {
+    return (
+      <div className="mx-auto max-w-7xl px-4 py-24 text-center">
+        <p className="text-zinc-500">Produk tidak ditemukan.</p>
+      </div>
+    );
+  }
+
+  // Key by id so state resets when navigating between products
+  return <ProductDetailView key={data.id} product={data} />;
+}
+
+function ProductDetailView({ product }: { product: Product }) {
   const router = useRouter();
   const { status } = useAuthStore();
   const { addItem } = useCartStore();
 
   const [activeImage, setActiveImage] = useState(0);
   const [variantId, setVariantId] = useState<number | null>(
-    product.variants && product.variants.length > 0 ? product.variants[0].id : null,
+    product.variants && product.variants.length > 0
+      ? product.variants[0].id
+      : null,
   );
   const [qty, setQty] = useState(1);
   const [adding, setAdding] = useState(false);
@@ -43,18 +103,19 @@ export default function ProductDetailData({ product }: { product: Product }) {
   const activeSrc = gallery[activeImage]?.url;
 
   // Selected variant
-  const selectedVariant = product.variants?.find((v) => v.id === variantId) ?? null;
+  const selectedVariant = product?.variants?.find((v) => v.id === variantId) ?? null;
   const variantPrice = selectedVariant
-    ? Number(product.price) + Number(selectedVariant.extra_price || 0)
-    : Number(product.price);
+    ? Number(product?.price ?? 0) + Number(selectedVariant.extra_price || 0)
+    : Number(product?.price ?? 0);
 
   // Effective stock: variant stock if variant selected, else product stock
-  const effectiveStock = selectedVariant ? selectedVariant.stock : product.stock;
+  const effectiveStock = selectedVariant ? selectedVariant.stock : product?.stock ?? 0;
   const maxQty = Math.max(1, effectiveStock);
 
   // Reveal animations
   const detailsRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
+    if (!product) return;
     const el = detailsRef.current;
     if (!el) return;
     const ctx = gsap.context(() => {
@@ -69,6 +130,7 @@ export default function ProductDetailData({ product }: { product: Product }) {
 
   // Fetch reviews by product ID (endpoint uses ID, not slug)
   useEffect(() => {
+    if (!product) return;
     apiGet<PaginatedResponse<Review>>(`/products/${product.id}/reviews`)
       .then((r) => {
         setReviews(r.data);
@@ -79,11 +141,12 @@ export default function ProductDetailData({ product }: { product: Product }) {
         setReviewsError(extractError(e).message);
         setReviewsLoading(false);
       });
-  }, [product.id]);
+  }, [product?.id]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const total = useMemo(() => variantPrice * qty, [variantPrice, qty]);
 
   async function onAdd() {
+    if (!product) return;
     if (status !== "authenticated") {
       router.push("/login");
       return;

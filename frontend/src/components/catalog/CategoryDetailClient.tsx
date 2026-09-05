@@ -12,22 +12,23 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function CategoryDetailClient({
   slug,
-  initialCategory,
+  initialCategory = null,
 }: {
   slug: string;
-  initialCategory: Category;
+  initialCategory?: Category | null;
 }) {
   const gridRef = useRef<HTMLDivElement>(null);
   const [sub, setSub] = useState("");
 
-  const { data: category } = useAsyncData<Category[]>(() =>
-    apiGet<ApiResponse<Category[]>>("/categories").then((r) =>
-      r.data.filter((c) => c.parent_id === null),
-    ),
+  const { data: category } = useAsyncData<Category[]>(
+    () =>
+      apiGet<ApiResponse<Category[]>>("/categories").then((r) =>
+        r.data.filter((c) => c.parent_id === null),
+      ),
   );
 
   const current = category?.find((c) => c.slug === slug) ?? initialCategory;
-  const subs = current.children ?? [];
+  const subs = current?.children ?? [];
 
   const { data, loading, error, refetch } = useAsyncData<{
     products: Product[];
@@ -68,6 +69,28 @@ export default function CategoryDetailClient({
   }, [loading, data]);
 
   const products = data?.products ?? [];
+
+  if (!current) {
+    return (
+      <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+        <div className="h-8 w-1/2 animate-pulse rounded bg-zinc-200" />
+        <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+          {Array.from({ length: 8 }).map((_, i) => (
+            <div
+              key={i}
+              className="animate-pulse overflow-hidden rounded-2xl border border-zinc-200 bg-white"
+            >
+              <div className="aspect-square bg-zinc-200" />
+              <div className="space-y-2 p-4">
+                <div className="h-3 w-3/4 rounded bg-zinc-200" />
+                <div className="h-4 w-1/2 rounded bg-zinc-100" />
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
