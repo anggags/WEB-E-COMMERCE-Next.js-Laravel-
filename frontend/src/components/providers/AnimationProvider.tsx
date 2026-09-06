@@ -14,6 +14,9 @@ export function SmoothScrollProvider({ children }: { children: ReactNode }) {
     let lenis: LenisInstance | null = null;
     let gsapMod: typeof import("gsap") | null = null;
     let disposed = false;
+
+    // Release smooth scroll once the AVESTA preloader finishes.
+    const onReady = () => lenis?.start();
     const gsapTickerCallback = (time: number) => {
       lenis?.raf(time * 1000);
     };
@@ -34,6 +37,12 @@ export function SmoothScrollProvider({ children }: { children: ReactNode }) {
           easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
         });
 
+        // Respect the AVESTA preloader: keep Lenis frozen until it's done,
+        // then release scroll and refresh ScrollTrigger positions.
+        if (document.documentElement.classList.contains("avesta-loading")) {
+          lenis.stop();
+        }
+        window.addEventListener("avesta.preloaded", onReady);
         gsapMod = gsapNs;
         gsapMod.gsap.registerPlugin(ScrollTriggerNs.ScrollTrigger);
 
@@ -47,6 +56,7 @@ export function SmoothScrollProvider({ children }: { children: ReactNode }) {
 
     return () => {
       disposed = true;
+      window.removeEventListener("avesta.preloaded", onReady);
       if (gsapMod) gsapMod.gsap.ticker.remove(gsapTickerCallback);
       lenis?.destroy();
     };

@@ -5,11 +5,11 @@ export default function Footer() {
     <footer className="border-t border-zinc-200 bg-[#151518]">
       <div className="mx-auto grid max-w-7xl gap-8 px-4 py-12 sm:px-6 md:grid-cols-3 lg:px-8">
         <div>
-          <p className="text-lg font-bold tracking-tight">
-            Toko<span className="text-accent">Online</span>
+          <p className="font-display text-xl font-semibold uppercase tracking-[0.3em]">
+            AVEST<span className="text-accent">A</span>
           </p>
           <p className="mt-2 max-w-xs text-sm text-zinc-500">
-            Toko online terpercaya untuk kebutuhan Anda sehari-hari.
+            Butik daring terkurasi untuk pengalaman belanja Anda sehari-hari.
           </p>
         </div>
         <div>
@@ -49,7 +49,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="border-t border-zinc-200 py-6 text-center text-xs text-zinc-500">
-        &copy; {new Date().getFullYear()} Toko Online. Seluruh hak cipta.
+        &copy; {new Date().getFullYear()} AVESTA. Seluruh hak cipta.
       </div>
     </footer>
   );

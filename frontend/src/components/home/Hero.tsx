@@ -76,7 +76,7 @@ export default function Hero() {
 
       <div className="relative mx-auto flex min-h-[92vh] max-w-7xl flex-col items-start justify-center px-4 pb-28 pt-20 sm:px-6 lg:px-8">
         <p className="hero-eyebrow text-xs font-extrabold uppercase tracking-[0.35em] text-white/60">
-          Toko Online Terpercaya
+          Belanja Terkurasi AVESTA
         </p>
 
         <h1 className="mt-6 font-display text-[17vw] font-semibold uppercase leading-[0.95] tracking-[0.01em] sm:text-8xl lg:text-[9.5rem]">

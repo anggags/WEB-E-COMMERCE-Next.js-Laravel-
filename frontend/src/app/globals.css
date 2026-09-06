@@ -72,6 +72,59 @@ body {
   overflow-x: hidden;
 }
 
+/* Lock document scroll while the AVESTA preloader is visible. */
+html.avesta-loading,
+html.avesta-loading body {
+  overflow: hidden;
+  height: 100%;
+}
+
+/* ------------------------------------------------------------------ *
+ * AVESTA PRELOADER
+ * ------------------------------------------------------------------ */
+
+/* The two big "A"s — small and "gepeng" (flattened/wide).
+ * GSAP animates the outer .avesta-a (scale/xPercent); the inner glyph is
+ * statically squeezed vertically so the flat look survives the transforms. */
+.avesta-a {
+  font-size: clamp(40px, 11vw, 70px);
+  font-weight: 800;
+  display: inline-block;
+  line-height: 1;
+}
+.avesta-a-glyph {
+  display: inline-block;
+  transform: scaleY(0.72);
+}
+@media (min-width: 641px) {
+  .avesta-a {
+    font-size: clamp(56px, 9vw, 96px);
+  }
+}
+@media (min-width: 1025px) {
+  .avesta-a {
+    font-size: clamp(80px, 9vw, 140px);
+  }
+}
+
+/* Center photo — wide/flat ("gepeng") landscape box, object-fit cover. */
+.avesta-photo-wrap {
+  width: 96px;
+  height: 56px;
+}
+@media (min-width: 641px) {
+  .avesta-photo-wrap {
+    width: 132px;
+    height: 76px;
+  }
+}
+@media (min-width: 1025px) {
+  .avesta-photo-wrap {
+    width: 176px;
+    height: 100px;
+  }
+}
+
 ::selection {
   background: rgba(200, 41, 36, 0.35);
 }

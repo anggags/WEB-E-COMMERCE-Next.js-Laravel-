@@ -149,8 +149,8 @@ export default function Header() {
         data-nav-box
         className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8"
       >
-        <Link href="/" className="text-lg font-bold tracking-tight">
-          Toko<span className="text-accent">Online</span>
+        <Link href="/" className="font-display text-xl font-semibold uppercase tracking-[0.3em] text-zinc-100">
+          AVEST<span className="text-accent">A</span>
         </Link>
 
         <nav className="hidden items-center gap-6 text-sm font-medium text-zinc-300 md:flex">
